@@ -59,3 +59,25 @@ class Variable(models.Model):
         """
         _LOGGER.debug("Serializing `value` into `value_binary`...")
         self.value_binary = pickle.dumps(v)
+
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        if update_fields:
+            update_fields = list(update_fields)
+
+            try:
+                value_index = update_fields.index("value")
+                _LOGGER.debug(
+                    "Replacing `value` in `update_fields` kwarg with `value_binary`..."
+                )
+                update_fields[value_index] = "value_binary"
+            except ValueError:
+                _LOGGER.debug("No `value` in `update_fields` kwarg.")
+
+        return super().save(
+            force_insert=force_insert,
+            force_update=force_update,
+            using=using,
+            update_fields=update_fields,
+        )
