@@ -116,3 +116,4 @@ STATIC_URL = "/static/"
 #################
 
 INSTALLED_APPS.append("persistent_settings")
+MIDDLEWARE.append("persistent_settings.middlewares.PersistentSettingsMiddleware")
