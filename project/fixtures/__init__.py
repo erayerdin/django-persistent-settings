@@ -9,3 +9,10 @@ def variable_factory(db):
         return Variable.objects.create(name=name, value=value)
 
     return factory
+
+
+@pytest.fixture
+def request_obj(client):
+    from django.urls import reverse
+
+    return client.get(reverse("test")).wsgi_request

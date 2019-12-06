@@ -11,6 +11,12 @@ class _VariableManager(models.Manager):
     A special manager for `Variable` model overriding default Django manager.
     """
 
+    def __getitem__(self, key: str):
+        """
+        Used for PersistentSettingsMiddleware.
+        """
+        return self.get(name=key).value
+
     def create(self, **kwargs):
         """
         Creates a `Variable` instance.
@@ -61,7 +67,7 @@ class Variable(models.Model):
         self.value_binary = pickle.dumps(v)
 
     def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
+        self, force_insert=False, force_update=False, using=None, update_fields=None,
     ):
         if update_fields:
             update_fields = list(update_fields)
