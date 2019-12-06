@@ -6,7 +6,7 @@ class Variable(models.Model):
     A single setting.
     """
 
-    name = models.CharField(primary_key=True)
+    name = models.SlugField(primary_key=True, max_length=64)
     value = models.BinaryField()
 
     class Meta:
