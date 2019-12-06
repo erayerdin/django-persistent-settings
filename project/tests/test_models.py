@@ -14,3 +14,10 @@ class TestVariable:
         assert v_float.value == 5.5
         assert v_bool.value
         assert v_str.value == "bar"
+
+    @pytest.mark.it("value_binary update by value setter")
+    def test_update_attr(self, variable_factory):
+        v = variable_factory(5)
+        v.value = 6
+        v.save()
+        assert v.value == 6

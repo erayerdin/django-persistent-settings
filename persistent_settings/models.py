@@ -1,6 +1,9 @@
+import logging
 import pickle
 
 from django.db import models
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class _VariableManager(models.Manager):
@@ -17,7 +20,10 @@ class _VariableManager(models.Manager):
         If no `value` is given, `None` is serialized.
         """
 
+        _LOGGER.debug("Deleting `value_binary` kwarg...")
         kwargs.pop("value_binary", None)
+
+        _LOGGER.debug("Serializing `value`...")
         value = kwargs.pop("value", None)
         value_binary = pickle.dumps(value)
 
@@ -43,4 +49,13 @@ class Variable(models.Model):
         Deserializes `value_binary` using `pickle`.
         """
 
+        _LOGGER.debug("Deserializing `value_binary`...")
         return pickle.loads(self.value_binary)
+
+    @value.setter
+    def value(self, v):
+        """
+        Serializes `value` into `value_binary`.
+        """
+        _LOGGER.debug("Serializing `value` into `value_binary`...")
+        self.value_binary = pickle.dumps(v)
