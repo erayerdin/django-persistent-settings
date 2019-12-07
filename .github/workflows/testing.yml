@@ -9,7 +9,7 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.5, 3.6, 3.7]
-        django-version: [2.0, 2.1, 2.2]
+        django-version: [1.11, 2.0, 2.1, 2.2]
     env:
       PY_VERSION: ${{ matrix.python-version }}
       DJ_VERSION: ${{ matrix.django-version }}
