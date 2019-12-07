@@ -21,7 +21,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      if: (matrix.python-version != 3.7) && (matrix.django-version != 1.11)
+      if: (matrix.python-version != 3.7 && matrix.django-version != 1.11)
       run: |
         python -m pip install --upgrade pip
         # ref: https://stackoverflow.com/a/54053100/2926992
@@ -29,6 +29,6 @@ jobs:
         cat dev.requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install  || true
         pip install django==$DJ_VERSION --upgrade || true
     - name: Run Tests
-      if: (matrix.python-version != 3.7) && (matrix.django-version != 1.11)
+      if: (matrix.python-version != 3.7 && matrix.django-version != 1.11)
       run: |
         pytest
