@@ -24,9 +24,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         # ref: https://stackoverflow.com/a/54053100/2926992
-        cat requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install
-        cat dev.requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install
-        pip install django==$DJ_VERSION --upgrade
+        cat requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install || true
+        cat dev.requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install  || true
+        pip install django==$DJ_VERSION --upgrade || true
     - name: Run Tests
       run: |
         pytest
