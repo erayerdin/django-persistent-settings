@@ -13,9 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url  # django 1.1x compatibility
 from django.contrib import admin
 from django.http import HttpResponse
-from django.urls import path
 
 
 def _not_implemented_view(request, *args, **kwargs):
@@ -23,6 +23,6 @@ def _not_implemented_view(request, *args, **kwargs):
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("test/", _not_implemented_view, name="test"),
+    url("admin/", admin.site.urls),
+    url("test/", _not_implemented_view, name="test"),
 ]
