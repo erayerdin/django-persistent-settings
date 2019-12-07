@@ -20,7 +20,6 @@ jobs:
         # ref: https://stackoverflow.com/a/54053100/2926992
         cat requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install
         cat dev.requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install
-        pip install django==${{ matrix.django-version }} --upgrade
     - name: Check Linting
       run: |
         # stop the build if there are Python syntax errors or undefined names
