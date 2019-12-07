@@ -29,8 +29,8 @@ Django Persistent Settings helps you store, retrieve and update platform specifi
 
 <!-- Build Links Start -->
 
-[linux_development_badge_url]: https://img.shields.io/github/workflow/status/erayerdin/django-persistent-settings/Python%20package/development?logo=linux&logoColor=white&style=flat-square
-[linux_master_badge_url]: https://img.shields.io/github/workflow/status/erayerdin/django-persistent-settings/Python%20package/master?logo=linux&logoColor=white&style=flat-square
+[linux_development_badge_url]: https://img.shields.io/github/workflow/status/erayerdin/django-persistent-settings/testing/development?logo=linux&logoColor=white&style=flat-square
+[linux_master_badge_url]: https://img.shields.io/github/workflow/status/erayerdin/django-persistent-settings/testing/master?logo=linux&logoColor=white&style=flat-square
 
 [codecov_development_badge_url]: https://img.shields.io/codecov/c/gh/erayerdin/django-persistent-settings/development?style=flat-square
 [codecov_master_badge_url]: https://img.shields.io/codecov/c/gh/erayerdin/django-persistent-settings/master?style=flat-square
