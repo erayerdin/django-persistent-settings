@@ -22,7 +22,6 @@ jobs:
         cat dev.requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 pip install
     - name: Check Linting
       run: |
-        # stop the build if there are Python syntax errors or undefined names
         flake8 . --exclude .venv
     - name: Check Formatting
       run: |
