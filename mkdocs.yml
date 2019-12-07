@@ -32,3 +32,5 @@ markdown_extensions:
 
 nav:
     - Introduction: index.md
+    - Usage: usage.md
+    - Roadmap: roadmap.md
