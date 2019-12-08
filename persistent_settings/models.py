@@ -78,7 +78,7 @@ class Variable(models.Model):
                     "Replacing `value` in `update_fields` kwarg with `value_binary`..."
                 )
                 update_fields[value_index] = "value_binary"
-            except ValueError:
+            except ValueError:  # pragma: no cover
                 _LOGGER.debug("No `value` in `update_fields` kwarg.")
 
         return super().save(

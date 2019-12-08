@@ -1,5 +1,5 @@
-from django.apps import AppConfig
+from django.apps import AppConfig  # pragma: no cover
 
 
-class PersistentSettingsConfig(AppConfig):
+class PersistentSettingsConfig(AppConfig):  # pragma: no cover
     name = "persistent_settings"
