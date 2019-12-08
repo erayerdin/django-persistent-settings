@@ -80,6 +80,8 @@ class FooView(TemplateView):
     This was only an example. You can already use custom template tags to get
     `Variable`s in templates, discussed in the next section.
 
+[^1]: See [installation](/#installation) section.
+
 ### Retrieving in Template
 
 In order to get a variable in a template, you need to first load
@@ -95,4 +97,20 @@ You can use `get_var` tag to get a `Variable`'s value:
 {% get_var "FOO" %}
 ```
 
-[^1]: See [installation](/#installation) section.
+## Updating A Variable
+
+You can update a single variable:
+
+```python
+variable.value = 5
+variable.save()
+# or
+variable.save(update_fields=("value",))
+```
+
+Or you can mass update on a `QuerySet`:
+
+```python
+variables = Variable.objects.filter(name__startswith="FOO")
+variables.update(value=5)
+```

@@ -115,5 +115,18 @@ STATIC_URL = "/static/"
 
 #################
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"stream": {"level": "DEBUG", "class": "logging.StreamHandler",},},
+    "loggers": {
+        "persistent_settings": {
+            "handlers": ["stream"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
+
 INSTALLED_APPS.append("persistent_settings")
 MIDDLEWARE.append("persistent_settings.middlewares.PersistentSettingsMiddleware")
