@@ -34,6 +34,8 @@ jobs:
       run: |
         pytest
     - name: Run Coverage
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run: |
         pytest --cov persistent_settings
-        codecov -t $CODECOV_TOKEN
+        codecov
