@@ -56,7 +56,7 @@ class Variable(models.Model):
     A single setting.
     """
 
-    name = models.SlugField(primary_key=True, max_length=64)
+    name = models.SlugField(unique=True, max_length=64)
     value_binary = models.BinaryField()
 
     objects = _VariableManager()
