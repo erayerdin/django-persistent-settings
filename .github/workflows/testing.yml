@@ -33,3 +33,7 @@ jobs:
     - name: Run Tests
       run: |
         pytest
+    - name: Run Coverage
+      run: |
+        pytest --cov persistent_settings
+        codecov
