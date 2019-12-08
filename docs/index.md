@@ -8,11 +8,17 @@ have breaking changes.
 
 ## Python and Django Compatibility
 
-Django Persistent Settings currently supports Python 3.6 to 3.7
-*and* Django 2.0 to 2.2.
+The compatibility is shown at the table below:
 
-Django Persistent Settings does not target Django 3.x yet and
-will provide considerable updates for only 2.x.
+| | **Django 1.11** | **Django 2.0** | **Django 2.1** | **Django 2.2** |
+|-|---|---|---|---|
+| **Python 3.5** | ✅ | ✅ | ✅ | ✅ |
+| **Python 3.6** | ✅ | ✅ | ✅ | ✅ |
+| **Python 3.7** | ❌ | ✅ | ✅ | ✅ |
+
+!!! info
+    Django Persistent Settings does not officiall support
+    Django 3.0 yet.
 
 ## Installation
 
