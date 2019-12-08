@@ -38,3 +38,9 @@ In far future, maybe those below can be considered:
 
  - `rgt` stands for *render if greater than x*.
  - `rlt` stands for *render if less than x*.
+
+### User-Specific Settings
+
+While platform-wide settings are good enough, it would be even greater to make
+these settings user-specific, letting each user to set the settings to their
+own choice.
