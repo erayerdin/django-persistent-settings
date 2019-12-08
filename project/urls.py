@@ -13,9 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url  # django 1.1x compatibility
 from django.contrib import admin
-from django.urls import path
+from django.http import HttpResponse
+
+
+def _not_implemented_view(request, *args, **kwargs):
+    return HttpResponse("This endpoint is for testing purposes.")
+
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    url("admin/", admin.site.urls),
+    url("test/", _not_implemented_view, name="test"),
 ]

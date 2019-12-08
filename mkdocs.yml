@@ -1,0 +1,36 @@
+site_name: Django Persistent Settings
+site_author: Eray Erdin
+site_url: https://github.com/erayerdin/django-persistent-settings
+repo_name: erayerdin/tgcli
+repo_url: https://github.com/erayerdin/django-persistent-settings
+
+theme:
+  name: material
+  palette:
+    primary: cyan
+    accent: cyan
+
+extra:
+  social:
+    - type: github
+      link: https://github.com/erayerdin
+    - type: twitter
+      link: https://twitter.com/_erayerdin
+    - type: linkedin
+      link: https://linkedin.com/in/erayerdin
+    - type: telegram
+      link: https://t.me/erayerdin
+  disqus: erayerdin
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - footnotes
+
+nav:
+    - Introduction: index.md
+    - Usage: usage.md
+    - Roadmap: roadmap.md
