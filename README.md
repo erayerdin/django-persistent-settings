@@ -42,3 +42,11 @@ Django Persistent Settings helps you store, retrieve and update platform specifi
 [codecov_master_url]: https://codecov.io/gh/erayerdin/django-persistent-settings/branch/master
 
 <!-- Build Links End -->
+
+# Documentation
+
+Please refer to [the documentation](https://django-persistent-settings.readthedocs.io/).
+
+# License
+
+Licensed under the terms of [Apache License 2.0](LICENSE.txt).
