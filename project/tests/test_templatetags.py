@@ -1,9 +1,9 @@
 import pytest
 
 
-@pytest.mark.describe("`get_var` tag")
+@pytest.mark.describe("`var` tag")
 class TestGetVarTag:
-    tag_name = "get_var"
+    tag_name = "var"
 
     @pytest.mark.it("Only with variable name")
     def test_only_var_name(self, template_factory, context_factory, variable_factory):
