@@ -31,3 +31,10 @@ class TestGetVarTag:
         assert "<p>5.5</p>" in t_float
         assert "<p>False</p>" in t_bool
         assert "<p>lorem</p>" in t_str
+
+    def test_render_if_true(self, template_factory, context_factory, variable_factory):
+        variable_factory(True)
+        template = template_factory(
+            "FOO", tag_name=self.tag_name, rit="this is true"
+        ).render(context_factory())
+        assert "<p>this is true</p>" in template
