@@ -32,9 +32,18 @@ class TestGetVarTag:
         assert "<p>False</p>" in t_bool
         assert "<p>lorem</p>" in t_str
 
+    @pytest.mark.it("Render if True")
     def test_render_if_true(self, template_factory, context_factory, variable_factory):
         variable_factory(True)
         template = template_factory(
             "FOO", tag_name=self.tag_name, rit="this is true"
         ).render(context_factory())
         assert "<p>this is true</p>" in template
+
+    @pytest.mark.it("Render if False")
+    def test_render_if_false(self, template_factory, context_factory, variable_factory):
+        variable_factory(False)
+        template = template_factory(
+            "FOO", tag_name=self.tag_name, rif="this is false"
+        ).render(context_factory())
+        assert "<p>this is false</p>" in template
