@@ -1,5 +1,7 @@
 import pytest
 
+from persistent_settings import models
+
 
 @pytest.mark.describe("Variable Model")
 class TestVariable:
@@ -30,3 +32,19 @@ class TestVariable:
         v.value = 6
         v.save(update_fields=("value",))
         assert v.value == 6
+
+    @pytest.mark.it("manager `create` method")
+    def test_create(self, db):
+        v = models.Variable.objects.create(name="FOO", value=5)
+        assert v.value == 5
+
+    @pytest.mark.it("queryset `update` method")
+    def test_update(self, variable_factory):
+        for i in range(2):
+            variable_factory("bar", "FOO{}".format(i))
+
+        variables = models.Variable.objects.filter(name__startswith="FOO")
+        variables.update(value="baz")
+
+        for v in variables:
+            assert v.value == "baz"
