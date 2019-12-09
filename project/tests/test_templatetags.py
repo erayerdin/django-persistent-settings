@@ -47,3 +47,11 @@ class TestGetVarTag:
             "FOO", tag_name=self.tag_name, rif="this is false"
         ).render(context_factory())
         assert "<p>this is false</p>" in template
+
+    @pytest.mark.it("Render if None")
+    def test_render_if_none(self, template_factory, context_factory, variable_factory):
+        variable_factory(None)
+        template = template_factory(
+            "FOO", tag_name=self.tag_name, rin="this is none"
+        ).render(context_factory())
+        assert "<p>this is none</p>" in template

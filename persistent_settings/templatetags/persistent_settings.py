@@ -7,7 +7,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 @register.simple_tag(name="var")
-def get_var(name, rit="True", rif="False"):
+def get_var(name, rit="True", rif="False", rin=""):
     """
     A template tag to render value of a variable.
     """
@@ -16,6 +16,9 @@ def get_var(name, rit="True", rif="False"):
 
     variable = models.Variable.objects.get(name=name)
     value = variable.value
+
+    if value is None:
+        return rin
 
     if isinstance(value, bool):
         if value:
