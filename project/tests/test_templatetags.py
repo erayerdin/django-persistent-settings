@@ -40,6 +40,17 @@ class TestGetVarTag:
         ).render(context_factory())
         assert "<p>this is true</p>" in template
 
+    @pytest.mark.it("Render if True by settings")
+    def test_render_if_true_settings(
+        self, template_factory, context_factory, variable_factory, settings
+    ):
+        setattr(settings, "DPS_TEMPLATE_TRUE_DEFAULT", "this is true by settings")
+        variable_factory(True)
+        template = template_factory("FOO", tag_name=self.tag_name).render(
+            context_factory()
+        )
+        assert "<p>this is true by settings</p>" in template
+
     @pytest.mark.it("Render if False")
     def test_render_if_false(self, template_factory, context_factory, variable_factory):
         variable_factory(False)

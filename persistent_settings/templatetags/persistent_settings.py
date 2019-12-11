@@ -1,13 +1,17 @@
 import logging
 
+from django.conf import settings
+
 from persistent_settings import models
 from persistent_settings.templatetags import register
 
 _LOGGER = logging.getLogger(__name__)
 
+DPS_TEMPLATE_TRUE_DEFAULT = getattr(settings, "DPS_TEMPLATE_TRUE_DEFAULT", "True")
+
 
 @register.simple_tag(name="var")
-def get_var(name, rit="True", rif="False", rin=""):
+def get_var(name, rit=DPS_TEMPLATE_TRUE_DEFAULT, rif="False", rin=""):
     """
     A template tag to render value of a variable.
     """
