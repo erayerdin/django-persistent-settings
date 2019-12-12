@@ -80,6 +80,8 @@ class FooView(TemplateView):
     This was only an example. You can already use custom template tags to get
     `Variable`s in templates, discussed in the next section.
 
+[^1]: See [installation](/#installation) section.
+
 ### Retrieving in Template
 
 In order to get a variable in a template, you need to first load
@@ -89,10 +91,69 @@ In order to get a variable in a template, you need to first load
 {% load persistent_settings %}
 ```
 
-You can use `get_var` tag to get a `Variable`'s value:
+You can use `var` tag to get a `Variable`'s value:
 
 ```html
-{% get_var "FOO" %}
+{% var "FOO" %}
 ```
 
-[^1]: See [installation](/#installation) section.
+The table below shows which type of value renders how:
+
+| Value | Type | Renders |
+|---|---|---|
+| 5 | int | "5" |
+| 5.5 | float | "5.5" |
+| "foo" | str | "foo" |
+| True | bool | "True" |
+| False | bool | "False |
+| None | NoneType | "None" |
+
+#### Assignment in Template
+
+You can assing the return value of `var` tag so that you can use it later on
+in the template. For instance:
+
+```html
+{% var "FOO" as foo_var %}
+{% if foo_var > 5 %}
+    {# what happens if foo_var is greater than 5 #}
+{% endif %}
+```
+
+#### Conditional Rendering
+
+We've already covered the rendering in some conditions in `var` tag as kwargs.
+Those are:
+
+ - `rit`: Renders given value if the `value` of `Variable` is `True`.
+ - `rif`: Renders given value if the `value` of `Variable` is `False`.
+ - `rin`: Renders given value if the `value` of `Variable` is `None`.
+
+The usage is:
+
+```
+{% var "FOO1" rit="FOO1 is true" %}
+{% var "FOO2" rif="FOO2 is false" %}
+{% var "FOO3" rin="FOO3 is none" %}
+
+{# you can even combine them #}
+{% var "BAR" rit="BAR is true" rif="BAR is false" rin="BAR is none" %}
+```
+
+## Updating A Variable
+
+You can update a single variable:
+
+```python
+variable.value = 5
+variable.save()
+# or
+variable.save(update_fields=("value",))
+```
+
+Or you can mass update on a `QuerySet`:
+
+```python
+variables = Variable.objects.filter(name__startswith="FOO")
+variables.update(value=5)
+```

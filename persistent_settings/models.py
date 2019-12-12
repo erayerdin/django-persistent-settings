@@ -6,6 +6,31 @@ from django.db import models
 _LOGGER = logging.getLogger(__name__)
 
 
+def _change_value_kwarg(kwargs):
+    """
+    Changes `value` to `value_binary` by serializing it.
+    """
+
+    _LOGGER.debug("Removing `value_binary`...")
+    kwargs.pop("value_binary", None)
+
+    _LOGGER.debug("Serializing `value` to `value_binary`...")
+    value = kwargs.pop("value", None)
+    value_binary = pickle.dumps(value)
+    kwargs["value_binary"] = value_binary
+    return kwargs
+
+
+class _VariableQuerySet(models.QuerySet):
+    """
+    A special queryset for `Variable` model overriding default Django queryset.
+    """
+
+    def update(self, **kwargs):
+        _change_value_kwarg(kwargs)
+        return super().update(**kwargs)
+
+
 class _VariableManager(models.Manager):
     """
     A special manager for `Variable` model overriding default Django manager.
@@ -17,23 +42,13 @@ class _VariableManager(models.Manager):
         """
         return self.get(name=key).value
 
+    def get_queryset(self):
+        _LOGGER.debug("Initializing `_VariableQuerySet`...")
+        return _VariableQuerySet(self.model, using=self._db)
+
     def create(self, **kwargs):
-        """
-        Creates a `Variable` instance.
-
-        Serializes `value` to `value_binary` field using `pickle`.
-
-        If no `value` is given, `None` is serialized.
-        """
-
-        _LOGGER.debug("Deleting `value_binary` kwarg...")
-        kwargs.pop("value_binary", None)
-
-        _LOGGER.debug("Serializing `value`...")
-        value = kwargs.pop("value", None)
-        value_binary = pickle.dumps(value)
-
-        return super().create(value_binary=value_binary, **kwargs)
+        _change_value_kwarg(kwargs)
+        return super().create(**kwargs)
 
 
 class Variable(models.Model):
@@ -41,7 +56,7 @@ class Variable(models.Model):
     A single setting.
     """
 
-    name = models.SlugField(primary_key=True, max_length=64)
+    name = models.SlugField(unique=True, max_length=64)
     value_binary = models.BinaryField()
 
     objects = _VariableManager()

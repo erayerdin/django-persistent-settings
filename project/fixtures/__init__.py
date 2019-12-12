@@ -31,7 +31,7 @@ def template_factory():
 
     def build_template_args(*args, **kwargs):
         args_string = " ".join(map(lambda a: '"{}"'.format(a), args))
-        kwargs_string = " ".join(map(lambda k, v: '{}="{}"'.format(k, v), kwargs))
+        kwargs_string = " ".join(map(lambda k: '{}="{}"'.format(k, kwargs[k]), kwargs))
         return " ".join((args_string, kwargs_string))
 
     def factory(*args, **kwargs):
@@ -41,8 +41,10 @@ def template_factory():
 
         segments = (
             "{{% load {} %}}".format(load),
-            "<{wrapper}>{{% {} {} %}}</{wrapper}>".format(
-                tag_name, build_template_args(*args, **kwargs), wrapper=wrapper
+            "<{wrapper}>{{% {tag_name} {allargs} %}}</{wrapper}>".format(
+                tag_name=tag_name,
+                allargs=build_template_args(*args, **kwargs),
+                wrapper=wrapper,
             ),
         )
         template_string = "\n".join(segments)
