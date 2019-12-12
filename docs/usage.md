@@ -120,6 +120,26 @@ in the template. For instance:
 {% endif %}
 ```
 
+#### Conditional Rendering
+
+We've already covered the rendering in some conditions in `var` tag as kwargs.
+Those are:
+
+ - `rit`: Renders given value if the `value` of `Variable` is `True`.
+ - `rif`: Renders given value if the `value` of `Variable` is `False`.
+ - `rin`: Renders given value if the `value` of `Variable` is `None`.
+
+The usage is:
+
+```
+{% var "FOO1" rit="FOO1 is true" %}
+{% var "FOO2" rif="FOO2 is false" %}
+{% var "FOO3" rin="FOO3 is none" %}
+
+{# you can even combine them #}
+{% var "BAR" rit="BAR is true" rif="BAR is false" rin="BAR is none" %}
+```
+
 ## Updating A Variable
 
 You can update a single variable:
