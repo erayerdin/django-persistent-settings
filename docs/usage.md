@@ -108,6 +108,17 @@ The table below shows which type of value renders how:
 | False | bool | "False |
 | None | NoneType | "None" |
 
+#### Assignment in Template
+
+You can assing the return value of `var` tag so that you can use it later on
+in the template. For instance:
+
+```html
+{% var "FOO" as foo_var %}
+{% if foo_var > 5 %}
+    {# what happens if foo_var is greater than 5 #}
+{% endif %}
+```
 
 ## Updating A Variable
 
