@@ -91,11 +91,23 @@ In order to get a variable in a template, you need to first load
 {% load persistent_settings %}
 ```
 
-You can use `get_var` tag to get a `Variable`'s value:
+You can use `var` tag to get a `Variable`'s value:
 
 ```html
-{% get_var "FOO" %}
+{% var "FOO" %}
 ```
+
+The table below shows which type of value renders how:
+
+| Value | Type | Renders |
+|---|---|---|
+| 5 | int | "5" |
+| 5.5 | float | "5.5" |
+| "foo" | str | "foo" |
+| True | bool | "True" |
+| False | bool | "False |
+| None | NoneType | "None" |
+
 
 ## Updating A Variable
 
