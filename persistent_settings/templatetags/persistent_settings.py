@@ -7,7 +7,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 @register.simple_tag(name="var")
-def get_var(name, rit="True", rif="False", rin=""):
+def get_var(name, rit=True, rif=False, rin=None):
     """
     A template tag to render value of a variable.
     """
