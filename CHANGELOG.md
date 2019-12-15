@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.3a1] - 2019-12-15
+### Added
+ - `_PickleField` to be used with `value` field of `Variable`. Uses `pickle`.
+
+### Changed
+ - Replaced `value_binary` with `value` in `Variable` model
+
+### Removed
+ - `value_binary` field from `Variable` model
+
 ## [v0.1.2a1] - 2019-12-12
 ### Changed
  - `var` is optimized for assignment in template
