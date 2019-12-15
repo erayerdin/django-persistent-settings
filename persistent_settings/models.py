@@ -23,7 +23,9 @@ class _PickleField(models.BinaryField):
     A field for marshalling with pickle.
     """
 
-    def from_db_value(self, value, expression, connection):
+    def from_db_value(self, value, expression, connection, **kwargs):
+        # kwargs has a key called "context" in dj1.11
+        # kept for backwards compatibility
         if value is None:
             return None
 
