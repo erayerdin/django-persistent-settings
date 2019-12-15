@@ -77,3 +77,8 @@ class TestVariable:
         assert v_bool.value
         assert v_str.value == "bar"
         assert v_none.value is None
+
+    @pytest.mark.it("`__str__`")
+    def test_str(self, variable_factory):
+        v = variable_factory(5)
+        assert str(v) == "FOO"
