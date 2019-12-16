@@ -15,6 +15,7 @@ The compatibility is shown at the table below:
 | **Python 3.5** | ✅ | ✅ | ✅ | ✅ |
 | **Python 3.6** | ✅ | ✅ | ✅ | ✅ |
 | **Python 3.7** | ❌ | ✅ | ✅ | ✅ |
+| **Python 3.8** | ❌ | ✅ | ✅ | ✅ |
 
 !!! info
     Django Persistent Settings does not officiall support
