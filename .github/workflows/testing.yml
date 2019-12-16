@@ -33,7 +33,7 @@ jobs:
       run: |
         pytest
     - name: Run Coverage
-      if: "!((matrix.python-version == 3.7 || matrix.python-version == 3.8) && matrix.django-version == 1.11)"
+      if: "(matrix.python-version == 3.7 && matrix.django-version == 2.2)"
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run: |
