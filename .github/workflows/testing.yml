@@ -10,9 +10,9 @@ jobs:
       matrix:
         python-version: [3.5, 3.6, 3.7, 3.8]
         django-version: [1.11, 2.0, 2.1, 2.2]
-      exclude:
-        - python-version: 3.7 || 3.8
-          django-version: 1.11
+        exclude:
+          - python-version: 3.7 || 3.8
+            django-version: 1.11
     env:
       PY_VERSION: ${{ matrix.python-version }}
       DJ_VERSION: ${{ matrix.django-version }}
