@@ -11,7 +11,7 @@ class Command(BaseCommand):
     help = "Prints out the content of a Variable."
 
     def add_arguments(self, parser):
-        parser.add_argument("name", help="The name of variable.")
+        parser.add_argument("name", help="The name of Variable.")
         parser.add_argument(
             "-b",
             "--bash-style",
