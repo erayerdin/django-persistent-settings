@@ -65,3 +65,19 @@ def context_factory():
         return template.Context(kwargs)
 
     return factory
+
+
+@pytest.fixture
+def command_factory():
+    """
+    Calls commands and returns StringIO.
+    """
+    from io import StringIO
+    from django.core.management import call_command
+
+    def factory(command: str, *args, **kwargs) -> StringIO:
+        out = StringIO()
+        call_command(command, stdout=out, *args, **kwargs)
+        return out.getvalue()
+
+    return factory

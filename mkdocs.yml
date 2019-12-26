@@ -32,5 +32,7 @@ markdown_extensions:
 
 nav:
     - Introduction: index.md
-    - Usage: usage.md
-    - Roadmap: roadmap.md
+    - Basic Usage: basics.md
+    - Usage in Views: views.md
+    - Usage in Templates: templates.md
+    - Management Commands: commands.md

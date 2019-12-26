@@ -18,7 +18,7 @@
 
 [pypi_url]: https://pypi.org/project/django-persistent-settings/
 
-<!-- Meta Links Start -->
+<!-- Meta Links End -->
 
 Django Persistent Settings helps you store, retrieve and update platform specific settings in Django and provides many ways in setting retrieval such as request injection or template tags. It is inspired by Laravel's [akaunting/setting](https://github.com/akaunting/setting) package.
 
@@ -45,7 +45,8 @@ Django Persistent Settings helps you store, retrieve and update platform specifi
 
 # Documentation
 
-Please refer to [the documentation](https://django-persistent-settings.readthedocs.io/).
+Please refer to [the documentation](https://django-persistent-settings.readthedocs.io/)
+to get information about how to utilize this library.
 
 # License
 
