@@ -1,6 +1,7 @@
 import logging
 import pickle
 
+from django.contrib.auth import get_user_model
 from django.db import models
 
 _LOGGER = logging.getLogger(__name__)
@@ -51,11 +52,15 @@ class Variable(models.Model):
 
     name = models.SlugField(unique=True, max_length=64)
     value = _PickleField(null=True)
+    user = models.ForeignKey(
+        get_user_model(), models.CASCADE, "variables", null=True, default=None
+    )
 
     objects = _VariableManager()
 
     class Meta:
         ordering = ("name",)
+        unique_together = ("id", "user")
 
     def __str__(self):
         return self.name
