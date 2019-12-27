@@ -40,6 +40,19 @@ v_str = Variable.objects.create(name="V_STR", value="lorem")
 
 [pickle_docs]: https://docs.python.org/3/library/pickle.html
 
+### Association with a User
+
+You can also relate a `Variable` to a `User` instance to achieve user-specific
+settings.
+
+```python
+# assuming you have an instance of "user"
+dark_mode = Variable.objects.create(name="DARK_MODE", value=True, user=user)
+
+# you can also receive all settings of a particular "user"
+user_settings = user.variables.all()
+```
+
 ## Retrieving A Variable
 
 You can, again, retrieve a `Variable` instance in a standard fashion.
