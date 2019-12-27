@@ -50,7 +50,7 @@ class Variable(models.Model):
     A single setting.
     """
 
-    name = models.SlugField(unique=True, max_length=64)
+    name = models.SlugField(max_length=64)
     value = _PickleField(null=True)
     user = models.ForeignKey(
         get_user_model(), models.CASCADE, "variables", null=True, default=None
@@ -60,7 +60,7 @@ class Variable(models.Model):
 
     class Meta:
         ordering = ("name",)
-        unique_together = ("id", "user")
+        unique_together = ("name", "user")
 
     def __str__(self):
         return self.name
