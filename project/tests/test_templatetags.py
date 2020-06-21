@@ -61,3 +61,10 @@ class TestGetVarTag:
             "FOO", tag_name=self.tag_name, rin="this is none"
         ).render(context_factory())
         assert "<p>this is none</p>" in template
+
+    @pytest.mark.it("Render if not exists")
+    def test_render_if_not_exists(self, db, template_factory, context_factory):
+        template = template_factory(
+            "FOO", tag_name=self.tag_name, rine="this does not exist"
+        ).render(context_factory())
+        assert "<p>this does not exist</p>" in template

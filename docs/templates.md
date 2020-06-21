@@ -44,6 +44,7 @@ Those are:
  - `rit`: Renders given value if the `value` of `Variable` is `True`.
  - `rif`: Renders given value if the `value` of `Variable` is `False`.
  - `rin`: Renders given value if the `value` of `Variable` is `None`.
+ - `rine`: Renders given value if the `Variable` with given name does not exist.
 
 The usage is:
 
@@ -54,4 +55,16 @@ The usage is:
 
 {# you can even combine them #}
 {% var "BAR" rit="BAR is true" rif="BAR is false" rin="BAR is none" %}
+```
+
+`var` template tag always fails if the `Variable` with given name does not
+exist with `Variable.DoesNotExist` exception. You can also define what to render
+in case the `Variable` does not exist by defining `rine` parameter.
+
+```
+{# assuming FOO does not exist #}
+{% var FOO %}
+{# fails #}
+
+{% var FOO rine="FOO does not exist." %}
 ```
