@@ -18,7 +18,10 @@ GITHUB_RELEASE_URL = (
 setup(
     name="django-persistent-settings",
     version=persistent_settings.__version__,
-    description="django-persistent-settings is a library to store platform-specific settings in database.",
+    description=(
+        "django-persistent-settings is a library to store platform-specific settings in"
+        " database."
+    ),
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/erayerdin/django-persistent-settings",
@@ -27,6 +30,8 @@ setup(
         "persistent_settings",
         "persistent_settings.migrations",
         "persistent_settings.templatetags",
+        "persistent_settings.management",
+        "persistent_settings.management.commands",
     ),
     include_package_data=True,
     keywords="django persistent stored settings",
