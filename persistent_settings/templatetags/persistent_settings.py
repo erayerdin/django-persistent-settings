@@ -7,14 +7,25 @@ _LOGGER = logging.getLogger(__name__)
 
 
 @register.simple_tag(name="var")
-def get_var(name, rit=True, rif=False, rin=None):
+def get_var(name, rit=True, rif=False, rin=None, rine=None):
     """
     A template tag to render value of a variable.
     """
 
     _LOGGER.debug("Rendering value for `%s`...", name)
+    _LOGGER.debug("rit: %s", rit)
+    _LOGGER.debug("rif: %s", rif)
+    _LOGGER.debug("rin: %s", rin)
+    _LOGGER.debug("rine: %s", rine)
 
-    variable = models.Variable.objects.get(name=name)
+    try:
+        variable = models.Variable.objects.get(name=name)
+    except models.Variable.DoesNotExist as e:
+        if rine:
+            return rine
+        else:
+            raise e
+
     value = variable.value
 
     if value is None:
